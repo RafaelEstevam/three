@@ -3,7 +3,6 @@ import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber'
 import { TextureLoader, CubeTexture } from 'three';
 import cartao from '../assets/cartao.jpg'
-import nyvi from '../assets/nyvi.jpg'
 
 const BasicMaterial = ({ texture, attach }) => {
     return (
@@ -97,7 +96,7 @@ export function Cube({ image, image2, substract, ...props }) {
     // });
     // useFrame((state, delta) => (meshRef.current.rotation.x += delta))
     const texture = new TextureLoader().load(image || cartao);
-    const texture2 = new TextureLoader().load(image2 || nyvi);
+    const texture2 = new TextureLoader().load(image2 || cartao);
 
     return (
         <mesh
@@ -114,7 +113,7 @@ export function Cube({ image, image2, substract, ...props }) {
             {substract === 'reflexive' ? (
                 <Reflexive {...{ texture, texture2 }} />
             ) : substract === 'matte' ? (
-                <Matte {...{ texture, texture2 }} />
+                <Basic {...{ texture, texture2 }} />
             ) : (
                 <Basic {...{ texture, texture2 }} />
             )}
